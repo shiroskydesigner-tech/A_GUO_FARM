@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>結帳 - 阿國農場 A GUO FARM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/checkout.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <div class="wrap checkout-page">
+    <header>
+      <div class="header-brand">
+        <a href="../index.html" class="brand">
+          <div class="mark" aria-hidden="true"><img src="../images/logo/logo.svg" alt="阿國農場" /></div>
+          <div class="name">
+            <b>阿國農場</b>
+            <small>A GUO FARM</small>
+          </div>
+        </a>
+      </div>
+
+      <nav>
+        <button type="button" class="hamburger-btn" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-overlay">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="about.html#method">了解我們怎麼採收</a>
+        <a href="about.html#about">關於我們</a>
+        <div class="nav-right">
+          <a href="../index.html" class="home-link" aria-label="回首頁"><span aria-hidden="true">⌂</span></a>
+          <a href="https://s.ccat.com.tw/18714" class="cart-link" target="_blank" rel="noopener" aria-label="前往訂購"><span aria-hidden="true">🛒</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+      <a href="about.html#method">了解我們怎麼採收</a>
+      <a href="about.html#about">關於我們</a>
+    </div>
+
+    <main class="panel">
+      <div class="checkout-title">
+        <h1>結帳</h1>
+      </div>
+
+      <div id="checkout-empty" style="display:none;text-align:center;padding:60px 22px;color:var(--muted)">
+        <p>購物車是空的，無法結帳。</p>
+        <div class="btns" style="margin-top:16px">
+          <a class="btn" href="products.html">前往選購</a>
+        </div>
+      </div>
+
+      <div id="checkout-content" style="display:none">
+        <form class="checkout-form" id="checkout-form" novalidate>
+          <div class="field">
+            <label for="name">收件人姓名 <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="請填寫姓名" />
+            <div class="error" id="err-name" role="alert"></div>
+          </div>
+          <div class="field">
+            <label for="phone">聯絡電話 <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="請填寫電話" />
+            <div class="error" id="err-phone" role="alert"></div>
+          </div>
+          <div class="field">
+            <label for="address">收件地址 <span class="required">*</span></label>
+            <input type="text" id="address" name="address" required placeholder="請填寫完整地址" />
+            <div class="error" id="err-address" role="alert"></div>
+          </div>
+          <div class="field">
+            <label for="note">備註</label>
+            <textarea id="note" name="note" placeholder="選填"></textarea>
+          </div>
+          <div class="btns">
+            <a class="btn" href="cart.html">返回購物車</a>
+            <button type="submit" class="btn">送出訂單</button>
+          </div>
+        </form>
+
+        <div class="checkout-summary">
+          <div class="row total">
+            <span>訂單合計</span>
+            <span id="checkout-total-amount">NT$ 0</span>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div>阿國農場 A GUO FARM</div>
+        <div>© <span id="y"></span> All truth, no perfection.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../js/cart.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      var emptyEl = document.getElementById("checkout-empty");
+      var contentEl = document.getElementById("checkout-content");
+      var totalEl = document.getElementById("checkout-total-amount");
+      var form = document.getElementById("checkout-form");
+
+      if (getCart().length === 0) {
+        if (emptyEl) emptyEl.style.display = "block";
+        if (contentEl) contentEl.style.display = "none";
+      } else {
+        if (emptyEl) emptyEl.style.display = "none";
+        if (contentEl) contentEl.style.display = "block";
+        if (totalEl) totalEl.textContent = "NT$ " + Math.round(getCartTotalAmount());
+      }
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var name = document.getElementById("name");
+          var phone = document.getElementById("phone");
+          var address = document.getElementById("address");
+          var errName = document.getElementById("err-name");
+          var errPhone = document.getElementById("err-phone");
+          var errAddress = document.getElementById("err-address");
+          var valid = true;
+          if (errName) errName.textContent = "";
+          if (errPhone) errPhone.textContent = "";
+          if (errAddress) errAddress.textContent = "";
+
+          if (!name || !name.value.trim()) {
+            if (errName) errName.textContent = "請填寫收件人姓名";
+            valid = false;
+          }
+          if (!phone || !phone.value.trim()) {
+            if (errPhone) errPhone.textContent = "請填寫聯絡電話";
+            valid = false;
+          }
+          if (!address || !address.value.trim()) {
+            if (errAddress) errAddress.textContent = "請填寫收件地址";
+            valid = false;
+          }
+          if (!valid) return;
+
+          var payload = {
+            name: name.value.trim(),
+            phone: phone.value.trim(),
+            address: address.value.trim(),
+            note: (document.getElementById("note") && document.getElementById("note").value) || "",
+            items: getCart(),
+            total: getCartTotalAmount()
+          };
+          console.log("Submit order (mock):", payload);
+          alert("已收到您的訂單（目前為模擬送出）。\n之後可串接後端或金流。");
+          setCart([]);
+          if (window.updateHeaderCartCount) updateHeaderCartCount();
+          window.location.href = "products.html";
+        });
+      }
+    })();
+    if (window.updateHeaderCartCount) updateHeaderCartCount();
+  </script>
+</body>
+</html>

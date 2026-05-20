@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>購物車 - 阿國農場 A GUO FARM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/cart.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <div class="wrap cart-page">
+    <header>
+      <div class="header-brand">
+        <a href="../index.html" class="brand">
+          <div class="mark" aria-hidden="true"><img src="../images/logo/logo.svg" alt="阿國農場" /></div>
+          <div class="name">
+            <b>阿國農場</b>
+            <small>A GUO FARM</small>
+          </div>
+        </a>
+      </div>
+
+      <nav>
+        <button type="button" class="hamburger-btn" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-overlay">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="about.html#method">了解我們怎麼採收</a>
+        <a href="about.html#about">關於我們</a>
+        <div class="nav-right">
+          <a href="../index.html" class="home-link" aria-label="回首頁"><span aria-hidden="true">⌂</span></a>
+          <a href="https://s.ccat.com.tw/18714" class="cart-link" target="_blank" rel="noopener" aria-label="前往訂購"><span aria-hidden="true">🛒</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+      <a href="about.html#method">了解我們怎麼採收</a>
+      <a href="about.html#about">關於我們</a>
+    </div>
+
+    <main class="panel">
+      <div class="cart-title">
+        <h1>購物車</h1>
+      </div>
+
+      <div id="cart-list" class="cart-list">
+        <!-- Filled by JS -->
+      </div>
+
+      <div id="cart-empty" class="cart-empty" style="display:none">
+        <p>購物車是空的。</p>
+        <div class="btns" style="margin-top:16px">
+          <a class="btn" href="products.html">前往選購</a>
+        </div>
+      </div>
+
+      <div id="cart-summary" class="cart-summary" style="display:none">
+        <div class="row total">
+          <span>合計</span>
+          <span id="cart-total-amount">NT$ 0</span>
+        </div>
+        <div class="btns">
+          <a class="btn" href="products.html">繼續選購</a>
+          <a class="btn" href="checkout.html">前往結帳</a>
+        </div>
+      </div>
+
+      <footer>
+        <div>阿國農場 A GUO FARM</div>
+        <div>© <span id="y"></span> All truth, no perfection.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../js/cart.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      function renderCart() {
+        var cart = getCart();
+        var listEl = document.getElementById("cart-list");
+        var emptyEl = document.getElementById("cart-empty");
+        var summaryEl = document.getElementById("cart-summary");
+        var totalEl = document.getElementById("cart-total-amount");
+
+        if (!listEl) return;
+
+        if (cart.length === 0) {
+          listEl.innerHTML = "";
+          if (emptyEl) emptyEl.style.display = "block";
+          if (summaryEl) summaryEl.style.display = "none";
+          return;
+        }
+
+        if (emptyEl) emptyEl.style.display = "none";
+        if (summaryEl) summaryEl.style.display = "block";
+        if (totalEl) totalEl.textContent = "NT$ " + Math.round(getCartTotalAmount());
+
+        listEl.innerHTML = cart.map(function (item) {
+          var thumb = item.image
+            ? '<img src="../' + item.image + '" alt="" />'
+            : '<div class="placeholder"></div>';
+          var sub = (item.price || 0) * (item.qty || 1);
+          return (
+            '<div class="cart-item" data-id="' + item.id + '">' +
+              '<div class="thumb">' + thumb + '</div>' +
+              '<div class="info">' +
+                '<p class="name">' + (item.name || "") + '</p>' +
+                '<p class="price">NT$ ' + item.price + ' / 件</p>' +
+                '<div class="qty-wrap">' +
+                  '<button type="button" class="qty-minus" aria-label="減少">−</button>' +
+                  '<span>' + (item.qty || 1) + '</span>' +
+                  '<button type="button" class="qty-plus" aria-label="增加">+</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="subtotal">NT$ ' + Math.round(sub) + '</div>' +
+              '<button type="button" class="remove">移除</button>' +
+            '</div>'
+          );
+        }).join("");
+
+        listEl.querySelectorAll(".qty-minus").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var row = this.closest(".cart-item");
+            var id = row.getAttribute("data-id");
+            var current = getCart();
+            var item = current.find(function (i) { return i.id === id; });
+            if (item) {
+              var q = Math.max(1, (item.qty || 1) - 1);
+              updateCartQty(id, q);
+              renderCart();
+            }
+          });
+        });
+        listEl.querySelectorAll(".qty-plus").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var row = this.closest(".cart-item");
+            var id = row.getAttribute("data-id");
+            var current = getCart();
+            var item = current.find(function (i) { return i.id === id; });
+            if (item) {
+              updateCartQty(id, (item.qty || 1) + 1);
+              renderCart();
+            }
+          });
+        });
+        listEl.querySelectorAll(".remove").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var row = this.closest(".cart-item");
+            removeFromCart(row.getAttribute("data-id"));
+            renderCart();
+          });
+        });
+      }
+
+      if (window.addEventListener) {
+        window.addEventListener("cartUpdated", renderCart);
+      }
+      renderCart();
+    })();
+    if (window.updateHeaderCartCount) updateHeaderCartCount();
+  </script>
+</body>
+</html>

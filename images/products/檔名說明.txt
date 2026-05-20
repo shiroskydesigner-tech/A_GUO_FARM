@@ -1,0 +1,11 @@
+此資料夾：商品列表、商品詳情、購物車縮圖。
+目前建議檔名（對應 js/products.js）：
+  - lychee.jpg         → 本季荔枝
+  - lychee-gift.jpg    → 禮盒裝
+  - lychee-small.jpg   → 小份裝
+  - lychee-large.jpg   → 大份裝
+  - lychee-double.jpg  → 雙盒組
+  - lychee-trial.jpg   → 試吃組
+新增商品時：在 js/products.js 的 PRODUCTS 陣列加一筆，並將 image 欄位設為 "images/products/您的檔名.jpg"，然後把圖片放入此資料夾、檔名與 image 一致即可。
+對應位置：pages/products.html（列表）、pages/product-detail.html（詳情）、pages/cart.html（購物車）。
+格式建議：正方形或 1:1 比例，列表與詳情會自動裁切顯示。

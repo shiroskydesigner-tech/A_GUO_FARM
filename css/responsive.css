@@ -1,0 +1,370 @@
+/* 手機版：適合手機閱讀與觸控 */
+@media (max-width: 600px) {
+  /* 基底與版面 */
+  .wrap {
+    padding: 14px 12px 60px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 0 18px;
+    padding-top: 56px;
+  }
+
+  .header-brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .brand .mark {
+    width: 58px;
+    height: 58px;
+  }
+
+  .brand .name b {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .brand .name small {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* 固定列：漢堡 + 購物車，置於螢幕頂端 */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    gap: 12px;
+    font-size: 12px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav > a {
+    display: none;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .home-link {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hamburger-btn:hover {
+    border-color: rgba(42, 39, 35, 0.45);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .cart-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* 漢堡選單疊層 */
+  .nav-overlay {
+    display: flex;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.97);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s;
+    font-family: var(--serif);
+    letter-spacing: 1.2px;
+    font-size: 15px;
+  }
+
+  .nav-overlay.is-open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .nav-overlay a {
+    display: block;
+    padding: 14px 12px;
+    color: rgba(42, 39, 35, 0.88);
+    text-decoration: none;
+    border-radius: 10px;
+    border: 0.5px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .nav-overlay a:hover {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(42, 39, 35, 0.25);
+  }
+
+  .panel {
+    border-radius: 14px;
+  }
+
+  footer {
+    padding: 20px 8px 0;
+    font-size: 11px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  /* 首頁 hero 與區塊 */
+  .hero {
+    padding: 28px 0 24px;
+    min-height: 360px;
+    gap: 20px;
+  }
+
+  .hero-inner {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .hero-slider {
+    border-radius: 0;
+  }
+
+  .hero-slide img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .hero-slider-dots {
+    bottom: 12px;
+    gap: 8px;
+    padding: 5px 10px;
+  }
+
+  .hero-slider-dot.is-active {
+    width: 18px;
+  }
+
+  .tagline-zh {
+    font-size: 18px;
+  }
+  .tagline-en {
+    font-size: 14px;
+  }
+
+  .submark .cn {
+    font-size: 20px;
+    letter-spacing: 6px;
+  }
+
+  .submark .en {
+    font-size: 11px;
+  }
+
+  .btns {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 12px 18px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+
+  .divider {
+    width: 96%;
+  }
+
+  .section {
+    padding: 36px 16px;
+    gap: 12px;
+  }
+
+  .section h2 {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .section p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .spec {
+    padding: 14px 8px 0;
+  }
+
+  .spec .row {
+    gap: 10px;
+    row-gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pill {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  /* 首頁數值列表：手機版尺寸與排版 */
+  .spec .pill-data {
+    padding: 12px 14px;
+    min-width: 0;
+    flex: 1 1 calc(50% - 8px);
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .spec .pill-data .pill-label {
+    font-size: 13px;
+    padding: 0;
+  }
+
+  .spec .pill-data .pill-value {
+    font-size: 16px;
+    min-width: 1.4em;
+  }
+
+  .spec .pill-data .pill-unit {
+    font-size: 12px;
+  }
+
+  .spec .spec-weather .pill-data,
+  .spec .spec-taste .pill-data {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  /* 採收日期區間：手機版獨立一列 */
+  .spec .spec-weather .pill-data:first-child {
+    flex: 1 1 100%;
+  }
+}
+
+/* 商品列表頁 */
+@media (max-width: 600px) {
+  .page-title {
+    padding: 28px 16px 16px;
+  }
+
+  .page-title h1 {
+    font-size: 24px;
+  }
+
+  .page-title p {
+    font-size: 13px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 16px 32px;
+  }
+
+  .product-card .name {
+    font-size: 15px;
+  }
+
+  .product-card .price {
+    font-size: 13px;
+  }
+}
+
+/* 採收日曆 */
+@media (max-width: 600px) {
+  .harvest-calendar {
+    padding: 20px 12px 32px;
+  }
+
+  .harvest-calendar h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .harvest-calendar .calendar-nav button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .harvest-calendar .calendar-day {
+    min-height: 32px;
+    font-size: 12px;
+  }
+
+  .harvest-calendar .calendar-day.first-harvest::after {
+    font-size: 8px;
+  }
+}
+
+/* 購物車頁 */
+@media (max-width: 600px) {
+  .cart-title h1,
+  .checkout-title h1 {
+    font-size: 22px;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 0;
+  }
+
+  .cart-item .thumb {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cart-item .info {
+    flex: 1 1 100%;
+    order: 3;
+  }
+
+  .cart-item .qty-wrap {
+    margin-top: 4px;
+  }
+
+  .cart-item .subtotal {
+    text-align: left;
+    min-width: auto;
+  }
+
+  .cart-list,
+  .cart-summary {
+    padding: 16px 12px;
+  }
+
+  .checkout-form,
+  .checkout-summary {
+    padding: 16px 12px;
+  }
+
+  .checkout-form input,
+  .checkout-form textarea {
+    padding: 14px 12px;
+  }
+}

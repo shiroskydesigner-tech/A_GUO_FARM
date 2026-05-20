@@ -1,0 +1,4 @@
+此資料夾：站頭品牌 logo。
+建議檔名：logo.png 或 logo.svg
+對應位置：目前 header 使用文字「A」，若改為圖片 logo，可替換 index.html 與各 pages/*.html 的 .brand .mark 區塊，路徑填 images/logo/logo.png（或 logo.svg）。
+格式建議：正方形或橫向，透明背景較佳。

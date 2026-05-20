@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>阿國農場 A GUO FARM｜一期一荔 · 2026 玉荷包</title>
+  <meta name="description" content="一次採收，不分級、不修飾。3 斤玉荷包自然混果禮盒，2026 春夏限定。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+<body class="landing">
+
+  <header>
+    <div class="header-brand">
+      <a href="index.html" class="brand">
+        <div class="mark" aria-hidden="true"><img src="images/logo/logo.svg" alt="阿國農場" /></div>
+        <div class="name">
+          <b>阿國農場</b>
+          <small>A GUO FARM</small>
+        </div>
+      </a>
+    </div>
+
+    <nav>
+      <button type="button" class="hamburger-btn" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+      <!-- <a href="#profile">本年度屬性</a> -->
+      <a href="#story">採收哲學</a>
+      <a href="#spec">規格與配送</a>
+      <div class="nav-right">
+        <a href="https://s.ccat.com.tw/18714" class="cart-link" target="_blank" rel="noopener" aria-label="前往訂購"><span aria-hidden="true">🛒</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <!-- <a href="#profile">本年度屬性</a> -->
+    <a href="#story">採收哲學</a>
+    <a href="#spec">規格與配送</a>
+  </div>
+
+  <main>
+    ── Video hero ───────────────────────────────────
+     
+    <section class="video-hero " id="top">
+      
+      <video class="video-hero__video" autoplay muted loop playsinline preload="auto" poster="04_mp4/frame_001.jpg">
+        <source src="04_mp4/lychee_Video__.mp4" type="video/mp4" />
+      </video>
+      
+      <div class="video-hero__veil" style="    position: absolute;    inset: 0; background: rgba(20, 20, 20, 0.4);    z-index: 1;    pointer-events: none;  "></div>
+      <div class="video-hero__copy">
+        <div class="video-hero__logo" aria-hidden="true">
+          <img src="images/logo/logo2.svg" alt="阿國農場" />
+        </div>
+        <span class="video-hero__eyebrow">A GUO FARM · 2026</span>
+        <!-- <h1 class="video-hero__title"> -->
+          <!-- <span class="row">一期一荔</span>
+          <span class="row accent">This season only.</span> -->
+        <!-- </h1> -->
+        <p class="video-hero__sub">
+          <strong>3 斤玉荷包自然混果禮盒</strong><br />
+          一次採收 · 不分級 · 不修飾<br />
+          數量有限，售完即止
+        </p>
+        <a class ="cta  cta--ghost cta--lg  " href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener" >立即購買</a>
+      </div>
+      <div class="scroll-cue" aria-hidden="true" >scroll</div>
+    </section>
+
+    <!-- ── Annual profile statement ───────────────────── -->
+    <section class="profile reveal" id="profile">
+      <p class="profile__eyebrow">Annual Lychee Profile Statement</p>
+      <h2 class="profile__title">本年度荔枝｜屬性發表</h2>
+      <div class="profile__grid reveal-stagger">
+        <div class="profile__stat profile__stat--text">
+          <span class="profile__stat-label">採收區間</span>
+          <span class="profile__stat-value" id="weather-date">--/--</span>
+          <span class="profile__stat-sub">Harvest window</span>
+        </div>
+        <div class="profile__stat">
+          <span class="profile__stat-label">氣溫</span>
+          <span class="profile__stat-value"><span id="weather-temp">0</span><span class="profile__stat-unit">℃</span></span>
+          <span class="profile__stat-sub">Air temperature</span>
+        </div>
+        <div class="profile__stat">
+          <span class="profile__stat-label">濕度</span>
+          <span class="profile__stat-value"><span id="weather-humidity">0</span><span class="profile__stat-unit">%</span></span>
+          <span class="profile__stat-sub">Humidity</span>
+        </div>
+        <div class="profile__stat">
+          <span class="profile__stat-label">甜度</span>
+          <span class="profile__stat-value">18<span class="profile__stat-unit">°Bx</span></span>
+          <span class="profile__stat-sub">Sweetness · 脆甜 · 荔枝香</span>
+        </div>
+      </div>
+      <a class ="cta cta--lg  " href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener" >立即購買</a>
+
+    </section>
+
+    <!-- ── Stage 1: 不分級不修飾 ────────────────────────── -->
+    <section class="stage reveal" id="story">
+
+      <div class="stage__media">
+        <img src="images/Slider/slide-3.jpg" alt="一次採收的玉荷包" />
+      </div>
+      
+      <div class="stage__copy">
+        <p class="stage__eyebrow">No selection</p>
+        <h2 class="stage__title">一次採收不分級、不修飾</h2>
+        <p class="stage__body">
+          大小、色差、斑點與成熟差異皆保留。<br />
+          你收到的，就是今年真正的樣子——<br />
+          不是更完美，而是更誠實。
+        </p>
+        
+        <div class="stage__meta">
+          <span>Harvested once</span><span>No grading</span><span>No correction</span>
+        </div>
+        <a class="cta" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener">立即購買</a>
+      </div>
+    </section>
+
+    <!-- ── Stage 2: Harvested once. Then left to be. ─── -->
+    <section class="stage stage--reverse stage--tinted reveal">
+      <div class="stage__media">
+        <img src="images/Slider/slide-2.jpg" alt="自然成熟的果實" />
+      </div>
+      <div class="stage__copy">
+        <p class="stage__eyebrow">Harvested once. Then left to be.</p>
+        <h2 class="stage__title">把一季的果實，<br />以最克制的方式呈現</h2>
+        <p class="stage__body">
+          我們不把自然修成標準品。<br />
+          季節是這顆果實唯一的編輯者，<br />
+          我們只負責採收、包裝、送到你手裡。
+        </p>
+        <a class="cta" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener">立即購買</a>
+      </div>
+    </section>
+
+    <!-- ── Stage 3: 規格與配送 ─────────────────────────── -->
+    <section class="stage reveal" id="spec">
+      <div class="stage__media">
+        <img src="images/Slider/slide-5.jpg" alt="禮盒包裝" />
+      </div>
+      <div class="stage__copy">
+        <p class="stage__eyebrow">Specification</p>
+        <h2 class="stage__title">3 斤玉荷包禮盒</h2>
+        <p class="stage__body">
+          數量有限，售完即止。<br />
+          建議冷藏、盡早食用。<br />
+          配送方式與運費於結帳頁顯示，<br />
+          或來信詢問。
+        </p>
+        <div class="stage__meta">
+          <span>淨重 3 斤</span><span>冷藏宅配</span><span>限量發行</span>
+        </div>
+        <a class="cta" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener">立即購買</a>
+      </div>
+    </section>
+
+    <!-- ── Stage 4: 限量、季節 ────────────────────────── -->
+    <section class="stage stage--reverse stage--dark reveal">
+      <div class="stage__media">
+        <img src="images/Slider/slide-4.jpg" alt="本季最後的果實" />
+      </div>
+      <div class="stage__copy">
+        <p class="stage__eyebrow">This season only · Never again</p>
+        <h2 class="stage__title">今年的荔枝，只屬於今年</h2>
+        <p class="stage__body">
+          一棵樹的好年壞年，<br />
+          一個季節的雨多雨少，<br />
+          都會寫進這一盒裡。<br /><br />
+          錯過就是真的錯過。
+        </p>
+        <a class="cta cta--ghost" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener">立即購買</a>
+      </div>
+    </section>
+
+    <!-- ── Closing manifesto ────────────────────────────── -->
+    <section class="closing reveal">
+      <p class="closing__mark">A GUO FARM</p>
+      <h2 class="closing__title">All truth,<br />no perfection.</h2>
+      <p class="closing__sub">阿國農場 · 一期一荔· 2026</p>
+      <a class="cta cta--ghost cta--lg cta--center" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener">立即購買</a>
+    </section>
+
+    <footer>
+      <div class="footer-brand">
+        <span class="text-zh">阿國農場 A GUO FARM</span>
+        <span class="text-en">© <span id="y"></span> All truth, no perfection.</span>
+      </div>
+      <div>
+        <span class="text-en">產地直送 · 限量發行</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ── Sticky buy bar ───────────────────────────────── -->
+  <a class="buy-bar" href="https://s.ccat.com.tw/18714" target="_blank" rel="noopener" aria-label="立即購買 2026 玉荷包">
+    <span class="buy-bar__label">2026 春夏限定 · 3斤玉荷包自然混果禮盒</span>
+    <span class="buy-bar__cta">
+      <span>立即購買</span>
+      <span class="buy-bar__cta-arrow" aria-hidden="true">→</span>
+    </span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script src="js/landing.js"></script>
+  <script src="js/weather-pills.js"></script>
+</body>
+</html>
