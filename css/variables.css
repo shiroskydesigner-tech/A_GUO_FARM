@@ -1,0 +1,293 @@
+/* ============================================================================
+   variables.css  ──  全站設計 TOKEN（顏色 / 字型 / 尺寸 / 動效）
+   ----------------------------------------------------------------------------
+   ★ 想調整任何顏色、字型、尺寸，請優先改這個檔案。
+   ★ 改一個值，網站全部用到的地方都會跟著變。
+   ★ 每個 token 下方都註明：
+        Where → 出現在哪些檔案 / 哪些 class（給你定位修改影響範圍）
+   ============================================================================ */
+
+:root {
+
+  /* ==========================================================================
+     [1] 字型 FONTS
+     ========================================================================== */
+
+  /* --serif： 主標、按鈕、品牌字、英文 eyebrow 全部用這套襯線體
+     Where → 幾乎所有文字標題 / .btn / nav / .stage__title / .closing__title
+              出現在 layout.css, components.css, landing.css */
+  --serif: "Noto Serif TC", "Songti TC", serif;
+
+  /* --sans： body 預設無襯線字（也是 cart-count 數字字型）
+     Where → base.css → body, layout.css → .cart-count */
+  --sans: "Noto Sans TC", ui-sans-serif, system-ui, -apple-system,
+          "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+  /* --song： 內文宋體（書本印刷感）
+     Where → landing.css → .video-hero__sub, .stage__body, .closing__sub,
+              .profile__stat-sub  ／  components.css → .section p */
+  --song: "Noto Serif TC", "Songti TC", serif;
+
+
+  /* ==========================================================================
+     [2] 核心品牌色 BRAND COLORS（純色，最常需要調整）
+     ========================================================================== */
+
+  /* --paper：主紙張底色（明亮畫布、淺色區塊背景）
+     Where → base.css → body 背景
+              landing.css → body.landing, .stage（淺底）, .profile
+              landing.css → header .brand .mark img 圖示底
+              全站文字反白時的色（深底 section 上的字） */
+  --paper: #ffffff;
+
+  /* --paper-warm：奶咖色（侘寂石紙感，stage--tinted 用的）
+     Where → landing.css → .stage--tinted（第 2 段大圖文）*/
+  --paper-warm: #efeae2;
+
+  /* --night：深咖色（晚色／結尾／footer／買購條的背景）
+     Where → landing.css → .closing 背景、.stage--dark 背景
+              landing.css → body.landing footer 背景
+              landing.css → .buy-bar 背景（半透明後）
+              landing.css → @media .nav-overlay 手機選單背景 */
+  --night: #1d1a16;
+
+  /* --night-soft：略亮的晚色（影片區的底，影片載入前看到的色）
+     Where → landing.css → .video-hero 背景 */
+  --night-soft: #1a1815;
+
+  /* --ink：主要墨色（最深的字色）
+     Where → variables 系列 --text* tokens 都是這個色的 alpha 版本
+              直接用：layout.css → .cart-count 背景（不透明圓點） */
+  --ink: #2a2723;
+  --ink-2: rgb(132, 40, 40);;
+
+  /* --muted：次要墨色（標籤、副資訊、版權字）
+     Where → 直接用：layout.css → .brand .name small
+              components.css → .pill-label, .pill-unit, .pill-data .pill-unit
+              landing.css → .profile__stat-label, .profile__stat-unit
+              variables 系列 --muted-* tokens 都是這個色的 alpha 版本 */
+  --muted: #6e6259;
+
+  /* --accent：荔枝紅（主要強調色 — CTA、hover、價格、stage 標籤）
+     Where → components.css → .btn:hover 文字、.btn::after gradient
+              components.css → .pill-data .pill-value 數值色
+              landing.css → .stage__eyebrow, .stage__title em,
+                            .profile__eyebrow, .profile__stat-value,
+                            .buy-bar:hover 背景、.buy-bar:hover .buy-bar__cta */
+  --accent: #2a2723;
+
+  /* --accent-warm：荔枝皮暖色（深底 section 上的強調色）
+     Where → landing.css → .stage--dark .stage__eyebrow,
+                            .stage--dark .stage__title em
+              landing.css → .closing::before 第二個 radial gradient */
+  --accent-warm: #f4b89e;
+
+  /* --leaf：荔枝葉綠（裝飾色，目前只用於舊版 .fruit 葉子裝飾）
+     Where → components.css → .fruit.leaf::after */
+  --leaf-green: #4a5c44;
+
+
+  /* ==========================================================================
+     [3] 文字色階 TEXT TONE STEPS（--ink 的 alpha 版本）
+     ----------------------------------------------------------------------------
+     依視覺強度由強到弱排列。改 --ink 會連動全部。
+     ========================================================================== */
+
+  /* --text：最強內文色（標題、重要訊息）
+     Where → landing.css → .stage__title, .profile__title */
+  --text: rgba(42, 39, 35, 0.92);
+
+  /* --text-soft：一般內文色（次標、品牌名、tagline、footer 簡介）
+     Where → layout.css → .brand .name b（隱含）, footer .text-zh
+              components.css → .tagline, .section h2 */
+  --text-soft: rgba(42, 39, 35, 0.88);
+
+  /* --text-mid：按鈕基本字色、spec 文字
+     Where → components.css → .btn, .spec */
+  --text-mid: rgba(42, 39, 35, 0.86);
+
+  /* --text-faint：nav 文字、tagline-en、pill 字色
+     Where → layout.css → nav, .home-link
+              components.css → .tagline-en, .pill */
+  --text-faint: rgba(42, 39, 35, 0.78);
+
+  /* --text-whisper：最淡墨色（submark）
+     Where → components.css → .submark */
+  --text-whisper: rgba(42, 39, 35, 0.72);
+
+  /* --text-hover-border：hover 時的邊框墨色
+     Where → layout.css → .hamburger-btn:hover, .home-link:hover,
+                          .cart-link:hover, nav a:hover */
+  --text-hover-border: rgba(42, 39, 35, 0.45);
+
+
+  /* ==========================================================================
+     [4] 副墨色階 MUTED TONE STEPS（--muted 的 alpha 版本）
+     ========================================================================== */
+
+  /* --muted-strong：最深 muted（內文 p、submark en）
+     Where → components.css → .section p
+              landing.css → .stage__body */
+  --muted-strong: rgba(110, 98, 89, 0.95);
+
+  /* --muted-soft：footer 字
+     Where → layout.css → footer, footer .text-en
+              components.css → .submark .en */
+  --muted-soft: rgba(110, 98, 89, 0.9);
+
+  /* --muted-faint：profile stat sub
+     Where → landing.css → .profile__stat-sub */
+  --muted-faint: rgba(110, 98, 89, 0.85);
+
+  /* --muted-whisper：stage meta 小字
+     Where → landing.css → .stage__meta */
+  --muted-whisper: rgba(110, 98, 89, 0.7);
+
+
+  /* ==========================================================================
+     [5] 紙色透明階 PAPER ALPHA（深底 section 上的反白字 / 邊框）
+     ========================================================================== */
+
+  /* --paper-strong：近實心紙色（buy-bar hover 後背景、stage--dark body 文字）
+     Where → landing.css → .stage--dark .stage__body 文字
+              landing.css → .buy-bar:hover .buy-bar__cta 背景 */
+  --paper-strong: rgba(251, 250, 248, 0.85);
+
+  /* --paper-2：中等透明紙色（scroll-cue、eyebrow line、stage--dark eyebrow 文字）
+     Where → landing.css → .video-hero__eyebrow::before,
+                            .video-hero__title .accent,
+                            .scroll-cue, .scroll-cue::after,
+                            .stage--dark .stage__eyebrow（85%），
+                            footer .text-en（55%） */
+  --paper-2: rgba(251, 250, 248, 0.6);
+
+  /* --paper-3：淡紙色（buy-bar CTA 邊框、scroll-cue 結尾）
+     Where → landing.css → .buy-bar__cta border
+              landing.css → .stage--dark .stage__meta 文字 */
+  --paper-3: rgba(251, 250, 248, 0.4);
+
+  /* --paper-4：很淡的紙色（header over hero 的 cart icon 背景）
+     Where → landing.css → body.landing:not(.scrolled-past-hero)
+                            header .brand .mark, .cart-link 背景 */
+  --paper-4: rgba(251, 250, 248, 0.16);
+
+  /* --paper-5：幾乎隱形的紙色（深底分隔線）
+     Where → landing.css → .buy-bar 上緣 border (0.08) */
+  --paper-5: rgba(251, 250, 248, 0.08);
+
+    /* ---paper-6：荔枝色
+     Where → landing.css → .buy-bar 上緣 border (0.08) */
+  --paper-6: rgb(132, 40, 40);
+
+  /* ==========================================================================
+     [6] 強調色透明階 ACCENT ALPHA
+     ========================================================================== */
+
+  /* --accent-soft：按鈕 hover 邊框
+     Where → components.css → .btn:hover border-color */
+  --accent-soft: rgba(122, 46, 43, 0.45);
+
+  /* --accent-faint：closing 區的紅色 radial 光暈
+     Where → landing.css → .closing::before 第一個 radial gradient */
+  --accent-faint: rgba(122, 46, 43, 0.16);
+
+  /* --accent-whisper：按鈕底部紅色滲色
+     Where → components.css → .btn::after linear gradient 結尾 */
+  --accent-whisper: rgba(122, 46, 43, 0.08);
+
+
+  /* ==========================================================================
+     [7] 線條 / 邊界 LINES
+     ========================================================================== */
+
+  /* --line：標準細線色（panel 邊、pill 邊、divider 漸層中段、profile 格線）
+     Where → 幾乎所有 1px border 都用這個
+              layout.css → .panel, .brand .mark
+              components.css → .pill, .btn, .divider
+              landing.css → .profile__grid, .profile__stat */
+  --line: rgba(42, 39, 35, 0.12);
+
+  /* --line-strong：slider 圓點背景（半透明深色點）
+     Where → components.css → .hero-slider-dots 背景 */
+  --line-strong: rgba(42, 39, 35, 0.22);
+
+
+  /* ==========================================================================
+     [8] 陰影 SHADOWS
+     ========================================================================== */
+
+  /* --shadow：通用 panel 投影（淺）
+     Where → layout.css → .panel
+              components.css → .hero-slider */
+  --shadow: rgba(0, 0, 0, 0.08);
+
+  /* --shadow-soft：較淺的按鈕投影
+     Where → components.css → .btn 預設 box-shadow */
+  --shadow-soft: rgba(0, 0, 0, 0.06);
+
+  /* --shadow-strong：深投影（stage 大圖底部）
+     Where → landing.css → .stage__media box-shadow */
+  --shadow-strong: rgba(0, 0, 0, 0.25);
+
+
+  /* ==========================================================================
+     [9] 半透明白 GLASS（淺底 section 上的玻璃感按鈕／圖示底）
+     ========================================================================== */
+
+  /* --glass：通用半透明白底（home/cart/hamburger 等按鈕底）
+     Where → layout.css → .hamburger-btn, .home-link, .cart-link,
+                          .brand .mark 背景 */
+  --glass: rgba(255, 255, 255, 0.35);
+
+  /* --glass-strong：hover 後加強的半透明白底
+     Where → layout.css → .home-link:hover, .cart-link:hover
+              components.css → .pill 背景, .btn:hover 背景 */
+  --glass-strong: rgba(255, 255, 255, 0.55);
+
+  /* --glass-button：按鈕預設淡粉紅底（hint of accent）
+     Where → components.css → .btn 預設背景 */
+  --glass-button: rgba(255, 238, 238, 0.55);
+
+
+  /* ==========================================================================
+     [10] 尺寸 METRICS
+     ========================================================================== */
+
+  /* --max：內容最大寬度（panel 外框上限）
+     Where → layout.css → .wrap max-width */
+  --max: 1040px;
+
+  /* --radius：panel 圓角
+     Where → layout.css → .panel */
+  --radius: 18px;
+
+  /* --panel-pad：panel 內距（slider 全寬就是抵銷這個值）
+     Where → layout.css → .panel padding
+              components.css → .hero-slider margin/width 計算 */
+  --panel-pad: 22px;
+
+  /* --buy-bar-h：landing 底部固定購買條的高度
+     Where → landing.css → body.landing padding-bottom, .buy-bar height
+     ★ 手機 ≤600px 下會在 landing.css 內被改寫為 76px */
+  --buy-bar-h: 64px;
+
+
+  /* ==========================================================================
+     [11] 動效 MOTION
+     ========================================================================== */
+
+  /* --ease-organic：有機緩動曲線（一進一出，呼吸感）
+     Where → 幾乎所有 transition / animation 都用這個
+              components.css → .hero-slider-track, .btn, .reveal, divider, etc.
+              landing.css → .stage__media img, .reveal, .scroll-cue, .buy-bar 等 */
+  --ease-organic: cubic-bezier(0.65, 0, 0.35, 1);
+
+
+  /* ==========================================================================
+     [12] 舊版相容 LEGACY（已不使用、未來可刪）
+     ========================================================================== */
+
+  /* --bg：舊版頁面背景（已被 landing 覆蓋；其他頁面如有用到才需要）
+     Where → base.css → body background-color */
+  --bg: #f4f1ec;
+}

@@ -1,0 +1,235 @@
+/* ============================================================================
+   layout.css ─ 全站共用骨架（wrap / header / nav / panel / footer）
+   ★ 所有顏色都引用 variables.css 內的 token，請去那裡調整顏色。
+   ============================================================================ */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 22px 18px 80px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 2px 22px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger-btn {
+  display: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0.5px solid transparent;
+  border-radius: 12px;
+  background: var(--glass);
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text-faint);
+  border-radius: 1px;
+}
+
+.nav-overlay {
+  display: none;
+}
+
+.brand {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.brand .mark {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--glass);
+  overflow: hidden;
+}
+
+.brand .mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.brand .name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.brand .name b {
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
+.brand .name small {
+  display: block;
+  font-family: var(--serif);
+  letter-spacing: 2.6px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--serif);
+  letter-spacing: 1.2px;
+  color: var(--text-faint);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.home-link {
+  display: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0.5px solid transparent;
+  border-radius: 12px;
+  background: var(--glass);
+  color: var(--text-faint);
+  font-size: 18px;
+  line-height: 1;
+  place-items: center;
+  transition: border-color 0.2s, background 0.2s;
+  text-decoration: none;
+}
+
+.home-link:hover {
+  border-color: var(--text-hover-border);
+  background: var(--glass-strong);
+}
+
+nav a {
+  opacity: 0.9;
+  padding: 8px 12px;
+  border: 0.5px solid transparent;
+  border-radius: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+nav a:hover {
+  opacity: 1;
+  border-color: var(--text-hover-border);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.cart-link {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0.5px solid transparent;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--glass);
+  position: relative;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.cart-link:hover {
+  border-color: var(--text-hover-border);
+  background: var(--glass-strong);
+}
+
+.cart-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 11px;
+  font-family: var(--sans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px var(--shadow);
+  overflow: hidden;
+  padding: var(--panel-pad);
+}
+
+footer {
+  padding: 28px 6px 0;
+  color: var(--muted-soft);
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  margin-top: 26px;
+}
+
+footer .footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+footer .text-zh {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+footer .text-en {
+  font-size: 11px;
+  color: var(--muted-soft);
+}
+
+@media (max-width: 720px) {
+  nav {
+    gap: 14px;
+  }
+  .brand .name b {
+    font-size: 18px;
+  }
+}

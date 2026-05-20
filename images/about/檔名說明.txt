@@ -1,0 +1,4 @@
+此資料夾：關於我們、採收方式等頁面用圖。
+建議檔名：about-1.jpg, about-2.jpg, about-3.jpg …（依需要新增）。
+對應位置：pages/about.html；若日後在關於我們或採收方式區塊加入圖片，可從此資料夾引用，路徑為 images/about/about-1.jpg 等。
+格式建議：橫向或直向皆可，依版面需求。

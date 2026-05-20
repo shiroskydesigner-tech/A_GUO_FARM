@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>本季荔枝 - 阿國農場 A GUO FARM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/layout.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/product-list.css" />
+  <link rel="stylesheet" href="../css/responsive.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-brand">
+        <a href="../index.html" class="brand">
+          <div class="mark" aria-hidden="true"><img src="../images/logo/logo.svg" alt="阿國農場" /></div>
+          <div class="name">
+            <b>阿國農場</b>
+            <small>A GUO FARM</small>
+          </div>
+        </a>
+      </div>
+
+      <nav>
+        <button type="button" class="hamburger-btn" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-overlay">
+          <span></span><span></span><span></span>
+        </button>
+        <a href="about.html#method">了解我們怎麼採收</a>
+        <a href="about.html#about">關於我們</a>
+        <div class="nav-right">
+          <a href="../index.html" class="home-link" aria-label="回首頁"><span aria-hidden="true">⌂</span></a>
+          <a href="https://s.ccat.com.tw/18714" class="cart-link" target="_blank" rel="noopener" aria-label="前往訂購"><span aria-hidden="true">🛒</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+      <a href="about.html#method">了解我們怎麼採收</a>
+      <a href="about.html#about">關於我們</a>
+    </div>
+
+    <main class="panel">
+      <div class="page-title">
+        <h1>This season.</h1>
+        <p>數量有限，售完即止。建議冷藏、盡早食用。</p>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <!-- Filled by JS or static fallback -->
+      </div>
+
+      <footer>
+        <div>阿國農場 A GUO FARM</div>
+        <div>© <span id="y"></span> All truth, no perfection.</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../js/cart.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/products.js"></script>
+  <script>
+    (function () {
+      var grid = document.getElementById("product-grid");
+      if (!grid || typeof PRODUCTS === "undefined") return;
+      PRODUCTS.forEach(function (p) {
+        var card = document.createElement("div");
+        card.className = "product-card";
+        var thumb = p.image
+          ? '<img src="../' + p.image + '" alt="" loading="lazy" />'
+          : '<div class="placeholder" aria-hidden="true"></div>';
+        var actionHtml = p.goUrl
+          ? '<a class="btn" href="' + p.goUrl + '" target="_blank" rel="noopener">立即訂購</a>'
+          : '<button type="button" class="btn add-cart-btn" data-id="' + p.id + '" data-name="' + (p.name || '').replace(/"/g, "&quot;") + '" data-price="' + p.price + '" data-image="' + (p.image || '').replace(/"/g, "&quot;") + '">加入購物袋</button>';
+        card.innerHTML =
+          '<a href="product-detail.html?id=' + encodeURIComponent(p.id) + '">' +
+            '<div class="thumb">' + thumb + '</div>' +
+            '<p class="name">' + p.name + '</p>' +
+            '<p class="price">NT$ ' + p.price + ' / ' + p.unit + '</p>' +
+          '</a>' +
+          '<div style="padding:0 16px 16px">' + actionHtml + '</div>';
+        grid.appendChild(card);
+      });
+      grid.addEventListener("click", function (e) {
+        var btn = e.target.closest(".add-cart-btn");
+        if (!btn) return;
+        addToCart(
+          btn.getAttribute("data-id"),
+          btn.getAttribute("data-name"),
+          btn.getAttribute("data-price"),
+          btn.getAttribute("data-image"),
+          1
+        );
+        if (window.updateHeaderCartCount) updateHeaderCartCount();
+      });
+    })();
+    if (window.updateHeaderCartCount) updateHeaderCartCount();
+  </script>
+</body>
+</html>

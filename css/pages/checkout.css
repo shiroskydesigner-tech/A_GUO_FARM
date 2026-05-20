@@ -1,0 +1,108 @@
+.checkout-page .panel {
+  padding: 0 0 40px;
+}
+
+.checkout-title {
+  padding: 40px 22px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.checkout-title h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: rgba(42, 39, 35, 0.88);
+  font-weight: 600;
+}
+
+.checkout-form {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px 22px;
+}
+
+.checkout-form .field {
+  margin-bottom: 18px;
+}
+
+.checkout-form label {
+  display: block;
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  color: rgba(42, 39, 35, 0.88);
+  margin-bottom: 6px;
+}
+
+.checkout-form label .required {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  outline: none;
+  border-color: rgba(42, 39, 35, 0.3);
+}
+
+.checkout-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.checkout-form .error {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.checkout-summary {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 22px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.checkout-summary .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  font-size: 14px;
+  color: rgba(42, 39, 35, 0.88);
+}
+
+.checkout-summary .total {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.checkout-form .btns {
+  margin-top: 28px;
+  justify-content: flex-end;
+}
+
+.checkout-form .btns .btn {
+  margin-left: 12px;
+}
+
+.checkout-form .btn[type="submit"] {
+  min-width: 140px;
+}
