@@ -867,3 +867,19 @@ body.landing footer .text-en {
     animation: none;
   }
 }
+
+@media (max-width: 480px) {
+  body.landing header {
+    padding: 12px 16px;
+  }
+  .video-hero__copy {
+    padding: 0 20px;
+  }
+  .profile__stat {
+    min-width: 0;
+  }
+  .profile__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
